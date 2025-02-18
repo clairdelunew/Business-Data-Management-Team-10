@@ -1,0 +1,509 @@
+boucheron_all:
+  proxy: False
+  iplocation: fr
+  manual_input: False
+  wait: 2
+  js: True
+  click_popup: //div[@id="onetrust-close-btn-container"]/button
+  scroll_and_load_more: False
+  items_out: //li[contains(@class, "product-item")]
+  #//li[contains(@class, "item product product-item")]
+  url: ./a/@data-product-url
+  in_url: false
+  total_items: //div[@id="toolbar-amount"]/p/text()
+  image_url: .//img/@src
+  price: 
+    - .//span[@class='price']/text()
+  reference_code: .//@data-product-sku
+  collection: .//@data-product-name
+  start_url:
+    BOUCHERON_CNY_WATCHES: #60
+      - https://www.boucheron.cn/cn_en/watches/all-watches.html?p={}&glCountry=CN&glCurrency=CNY
+    # BOUCHERON_EUR_WATCHES: #60
+    #   - https://www.boucheron.com/fr_en/watches/all-watches.html?p={}&glCountry=FR&glCurrency=EUR
+    # BOUCHERON_CHF_WATCHES: #60
+    #   - https://www.boucheron.com/ch_en/watches/all-watches.html?p={}&glCountry=CH&glCurrency=CHF
+    # BOUCHERON_GBP_WATCHES: 
+    #   - https://www.boucheron.com/gb/watches/all-watches.html?p={}&glCountry=GB&glCurrency=GBP
+    # BOUCHERON_HKD_WATCHES: 
+    #   - https://www.boucheron.com/hk_en/watches/all-watches.html?p={}&glCountry=HK&glCurrency=HKD
+    # BOUCHERON_JPY_WATCHES: 
+    #   - https://www.boucheron.com/ja_en/watches/all-watches.html?p={}&glCountry=JA&glCurrency=JPY
+    # BOUCHERON_USD_WATCHES:
+    #   - https://www.boucheron.com/us/watches/all-watches.html?p={}&glCountry=US&glCurrency=USD
+    # BOUCHERON_TWD_WATCHES:
+    #   - https://www.boucheron.com/tw/watches/all-watches.html?p={}&glCountry=TW&glCurrency=TWD
+    # BOUCHERON_KRW_WATCHES:
+    #   - https://www.boucheron.com/ko/watches/all-watches.html?p={}&glCountry=KR&glCurrency=KRW
+    # BOUCHERON_AED_WATCHES:
+    #   - https://www.boucheron.com/ae_en/watches/all-watches.html?p={}&glCountry=AE&glCurrency=AED
+
+
+chopard_all:
+  proxy: False
+  iplocation: us
+  manual_input: True
+  domain: chopard.com
+  js: True
+  click_popup: //button[@id="onetrust-accept-btn-handler"]
+  click_popup2: //button[@class="modal-close btn btn-close"]
+  scroll_and_load_more: True #//div[@class="show-more"]//button
+  scroll_slowly: true
+  wait: 5
+  items_out: //section[@id="tab-products"]/div/ul/li[@class="product-grid__product product"]
+  url: .//a/@href
+  in_url: False
+  image_url: .//div[contains(@class,"active")]//img/@src
+  reference_code: ./@data-pid
+  product_dict:  .//a[@class="product"]/@data-gtmdata
+  #collection: .//div[@class="product-card__title h3 headline"]/text()
+  total_items: //span[@class="qtyOfProducts"]/text()
+  collection: .//div[@class="product-card__title link-fade"]/span/text()
+  price: .//div[@class="price"]/span[@class="sales"]/text()[2]
+  # price: .//span[@class="value variationPrice"]/@content
+  # price: .//a/@data-gtmdata["price"]
+  start_url:
+    CHOPARD_GBP_WATCHES:
+    - https://www.chopard.com/en-gb/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    CHOPARD_EUR_WATCHES:
+    - https://www.chopard.com/fr-fr/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    CHOPARD_CNY_WATCHES:
+    - https://www.chopard.cn/zh-cn/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    CHOPARD_CHF_WATCHES:
+    - https://www.chopard.com/fr-ch/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    CHOPARD_USD_WATCHES:
+    - https://www.chopard.com/en-us/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    CHOPARD_JPY_WATCHES:
+    - https://www.chopard.com/ja-jp/watches #?prefn1=status&prefv1=enabled&start=0&sz=324&p=26
+    
+
+chaumet_all:
+  #manual_input: True 
+  scroll_and_load_more: True # //button[@class="button button--ghost-grey js-scroll ias-trigger"]
+  scroll_slowly: True
+  wait: 15
+  js: True
+  click_popup: //button[@id="onetrust-accept-btn-handler"]
+  items_out: //ol[@class="products items product-items row"]/li
+  url: .//div[contains(@class,"c-product-card__info")]/a/@href 
+  #.//a/@href
+  in_url: False
+  image_url: .//img/@data-src
+  price: .//span[@class="price"]/text()
+  total_items: //span[@class="toolbar-number"]/text()
+  start_url:
+    CHAUMET_AED_WATCHES:
+      - https://www.chaumet.com/ae_en/watches/collections?p={} 
+    CHAUMET_EUR_WATCHES:
+      - https://www.chaumet.com/fr/horlogerie/collections?p={} 
+    CHAUMET_HKD_WATCHES:
+      - https://www.chaumet.com/hk_cht/watches/collections?p={} #+-51
+    CHAUMET_TWD_WATCHES:
+      - https://www.chaumet.com/tw_cht/watches/collections?p={} 
+    CHAUMET_SGD_WATCHES:
+      - https://www.chaumet.com/sg_en/watches/collections?p={} 
+    CHAUMET_GBP_WATCHES:
+      - https://www.chaumet.com/gb_en/watches/collections?p={} 
+    CHAUMET_CNY_WATCHES:
+      - https://www.chaumet.com/zh_hans/watches/collections?p={} 
+    CHAUMET_JPY_WATCHES:
+      - https://www.chaumet.com/jp/watches/collections?p={} 
+    CHAUMET_KRW_WATCHES:
+      - https://www.chaumet.com/kr_kr/watches/collections?p={} 
+
+
+vacheronconstantin_all: 
+  proxy: False
+  iplocation: fr
+  domain: vacheron-constantin.com
+  js: True
+  items_out: //ul[@class="results-list grid-mode"]/li
+  url: .//a/@href
+  in_url: False
+  wait: 8
+  image_url: .//img/@data-src
+  price: .//span[@class="vac-product-card__price"]/span/text()
+  product_dict: .//@data-vue-stats-product
+  total_items: //p[@aria-labelledby="number-results-label-undefined"]/span/text()
+  #manual_input: True
+  start_url:
+    VACHERON_WATCHES_EUR:
+      - https://www.vacheron-constantin.com/fr/fr/watches/all-watches.html?priceCountry=FR&category=watches
+    VACHERON_WATCHES_USD:
+      - https://www.vacheron-constantin.com/us/en/watches/all-watches.html?priceCountry=US&category=watches
+    VACHERON_WATCHES_CHF:
+      - https://www.vacheron-constantin.com/ch/fr/watches/all-watches.html?priceCountry=CH&category=watches
+    VACHERON_WATCHES_JPY:
+      - https://www.vacheron-constantin.com/jp/en/watches/all-watches.html?priceCountry=JP&category=watches
+    VACHERON_WATCHES_CNY:
+      - https://www.vacheron-constantin.cn/cn/en/watches/all-watches.html?priceCountry=CN&category=watches
+    VACHERON_WATCHES_SGD:
+      - https://www.vacheron-constantin.com/sg/en/watches/all-watches.html?priceCountry=SG&category=watches
+    VACHERON_WATCHES_HKD:
+      - https://www.vacheron-constantin.com/hk/en/watches/all-watches.html?priceCountry=HK&category=watches
+    VACHERON_WATCHES_TWD:
+      - https://www.vacheron-constantin.com/ww/en/watches/all-watches.html?priceCountry=TW&category=watches
+    VACHERON_WATCHES_KRW:
+      - https://www.vacheron-constantin.com/kr/en/watches/all-watches.html?priceCountry=KR&category=watches
+    VACHERON_WATCHES_AED:
+      - https://www.vacheron-constantin.com/ww/en/watches/all-watches.html?priceCountry=AE&category=watches
+    VACHERON_WATCHES_GBP:
+      - https://www.vacheron-constantin.com/gb/en/watches/all-watches.html?priceCountry=GB&category=watches
+
+
+chanel_all_w:
+  proxy: False
+  iplocation: us
+  js: True
+  domain: chanel.com
+  cookies: False
+  scroll_and_load_more: //span[@data-test="btnViewMore_PLP"]
+  items_out: //div[@class="product-grid__item js-product-edito"]
+  url: .//a[@data-test="product_link"]/@href
+  in_url: False
+  wait: 2
+  total_items: //p[@class="plp-filter-bar__label is-light js-filters-total-results"]/text()
+  reference_code: ./article/@data-id
+  title: .//span[@data-product-element="name"]/text()
+  collection:
+  image_url: .//img/@src
+  price: 
+    - .//p[@class="is-strong price-on-request"]/text()
+    - .//p[@class="is-price"]/text()
+  brand: Chanel
+  currency: 
+  manual_input: False
+  start_url:
+    Chanel_EUR_Watches: 
+      - https://www.chanel.com/fr/horlogerie/collection/c/4x2/
+    Chanel_USD_Watches: 
+      - https://www.chanel.com/us/horlogerie/collection/c/4x2/
+    Chanel_CHF_Watches: 
+      - https://www.chanel.com/ch-fr/horlogerie/collection/c/4x2/
+    Chanel_HKD_Watches: 
+      - https://www.chanel.com/hk-en/horlogerie/collection/c/4x2/
+    Chanel_SGD_Watches: 
+      - https://www.chanel.com/sg/horlogerie/collection/c/4x2/
+    Chanel_JPY_Watches: 
+      - https://www.chanel.com/jp/horlogerie/collection/c/4x2/
+    Chanel_CNY_Watches: 
+      - https://www.chanel.cn/cn/watches/collection/c/4x2/
+    Chanel_GBP_Watches: 
+      - https://www.chanel.com/gb/horlogerie/collection/c/4x2/
+    Chanel_TWD_Watches: 
+      - https://www.chanel.com/tw/horlogerie/collection/c/4x2/
+    Chanel_AED_Watches: 
+      - https://www.chanel.com/ae-en/watches/collection/c/4x2/
+    Chanel_KRW_Watches: 
+      - https://www.chanel.com/kr/watches/collection/c/4x2/
+
+
+tagheuer_all:
+  domain: tagheuer.com
+  # manual_input: True
+  js: True
+  click_popup: //div[@id="onetrust-close-btn-container"]/button
+  scroll_slowly: True
+  scroll_and_load_more: True
+  items_out: //th-product-tile[@slot="items"]
+  url: ./@link 
+  in_url: False
+  total_items: //th-plp-layout/th-plp-refinement[@search-total]/@search-total
+  image_url: ./@main-image
+  reference_code: ./@pid
+  collection: ./@collection
+  subcollection : ./@sub-collection
+  price: ./@price
+  wait: 4
+  start_url:
+    Tagheuer_Watches_EUR:
+      - https://www.tagheuer.com/fr/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_TWD:
+      - https://www.tagheuer.com/tw/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_USD:
+      - https://www.tagheuer.com/us/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_CHF:
+      - https://www.tagheuer.com/ch/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_SGD:
+      - https://www.tagheuer.com/sg/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_GBP:
+      - https://www.tagheuer.com/gb/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_HKD:
+      - https://www.tagheuer.com/hk/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_CNY:
+      - https://www.tagheuer.com/cn/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_JPY:
+      - https://www.tagheuer.com/jp/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_KRW:
+      - https://www.tagheuer.com/kr/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+    Tagheuer_Watches_AED:
+      - https://www.tagheuer.com/ae/en/timepieces/let-us-guide-you/our-watches/?prefn1=ATT_COLLECTION_CODE&prefv1=TAG%20Heuer%20Aquaracer%7CTAG%20Heuer%20Autavia%7CTAG%20Heuer%20Carrera%7CTAG%20Heuer%20Formula%201%7CTAG%20Heuer%20Link%7CTAG%20Heuer%20Monaco&start=0&sz=15
+
+
+
+iwc_allnocny:
+  proxy: False
+  manual_input: False
+  iplocation: fr
+  js: True
+  domain: iwc.com
+  scroll_and_load_more: //button[@class= "iwc-pcv2__btn"]
+  scroll_slowly: False 
+  wait: 5
+  in_url: False
+  items_out: //div[contains(@class, "product-list-containe")]/div
+  url: .//a/@href
+  reference_code: .//p[contains(@class,"iwc-pcv2__slider-subtitle")]/text()
+  image_url: .//div[@class="slick-slide slick-current slick-active"]//img/@src
+  price: .//p[contains(@class,"iwc-pcv2__slider-title")][2]/text()
+  title: .//p[contains(@class,"iwc-pcv2__slider-title")][1]/text()
+  total_items: //div[contains(@class, "result-count")]/text()
+  brand: IWC
+  click_popup: //div[@id="popin_tc_privacy_text"]//a[@id="optout_link"]
+  click_popup2: //span[@class="iwc-button-close iwc-icn-close"]
+  start_url:
+    IWC_EUR_WATCHES:
+      - https://www.iwc.com/fr/watches/pilot-watches
+      - https://www.iwc.com/fr/watches/portugieser-watches
+      - https://www.iwc.com/fr/watches/ingenieur-watches
+      - https://www.iwc.com/fr/watches/aquatimer-watches
+      - https://www.iwc.com/fr/watches/portofino-watches
+    IWC_GBP_WATCHES:
+      - https://www.iwc.com/gb/en/watches/pilot-watches
+      - https://www.iwc.com/gb/en/watches/portofino-watches
+      - https://www.iwc.com/gb/en/watches/portugieser-watches
+      - https://www.iwc.com/gb/en/watches/ingenieur-watches
+      - https://www.iwc.com/gb/en/watches/aquatimer-watches
+    IWC_USD_WATCHES:
+      - https://www.iwc.com/us/en/watches/pilot-watches
+      - https://www.iwc.com/us/en/watches/portugieser-watches
+      - https://www.iwc.com/us/en/watches/portofino-watches
+      - https://www.iwc.com/us/en/watches/ingenieur-watches
+      - https://www.iwc.com/us/en/watches/aquatimer-watches
+    IWC_SGD_WATCHES:
+      - https://www.iwc.com/sg/en/watches/pilot-watches
+      - https://www.iwc.com/sg/en/watches/portugieser-watches
+      - https://www.iwc.com/sg/en/watches/ingenieur-watches
+      - https://www.iwc.com/sg/en/watches/aquatimer-watches
+      - https://www.iwc.com/sg/en/watches/portofino-watches
+    IWC_CHF_WATCHES:
+      - https://www.iwc.com/ch/fr/watches/pilot-watches
+      - https://www.iwc.com/ch/fr/watches/portugieser-watches
+      - https://www.iwc.com/ch/fr/watches/portofino-watches
+      - https://www.iwc.com/ch/fr/watches/ingenieur-watches
+      - https://www.iwc.com/ch/fr/watches/aquatimer-watches
+    IWC_JPY_WATCHES:
+      - https://www.iwc.com/jp/ja/watches/pilot-watches
+      - https://www.iwc.com/jp/ja/watches/portugieser-watches
+      - https://www.iwc.com/jp/ja/watches/portofino-watches
+      - https://www.iwc.com/jp/ja/watches/ingenieur-watches
+      - https://www.iwc.com/jp/ja/watches/aquatimer-watches
+    IWC_HKD_WATCHES:
+      - https://www.iwc.com/hk/en/watches/portugieser-watches
+      - https://www.iwc.com/hk/en/watches/portofino-watches
+      - https://www.iwc.com/hk/en/watches/pilot-watches
+      - https://www.iwc.com/hk/en/watches/ingenieur-watches
+      - https://www.iwc.com/hk/en/watches/aquatimer-watches
+    IWC_TWD_WATCHES:
+      - https://www.iwc.com/zh-tw/watches/portugieser-watches
+      - https://www.iwc.com/zh-tw/watches/portofino-watches
+      - https://www.iwc.com/zh-tw/watches/pilot-watches
+      - https://www.iwc.com/zh-tw/watches/ingenieur-watches
+      - https://www.iwc.com/zh-tw/watches/aquatimer-watches
+    IWC_KRW_WATCHES:
+      - https://www.iwc.com/kr/ko/watches/portugieser-watches
+      - https://www.iwc.com/kr/ko/watches/portofino-watches
+      - https://www.iwc.com/kr/ko/watches/pilot-watches
+      - https://www.iwc.com/kr/ko/watches/ingenieur-watches
+      - https://www.iwc.com/kr/ko/watches/aquatimer-watches
+    IWC_AED_WATCHES:
+      - https://www.iwc.com/ae/ar/watches/pilot-watches
+      - https://www.iwc.com/ae/ar/watches/portugieser-watches
+      - https://www.iwc.com/ae/ar/watches/portofino-watches
+      - https://www.iwc.com/ae/ar/watches/ingenieur-watches
+      - https://www.iwc.com/ae/ar/watches/aquatimer-watches
+iwc_cny:
+  proxy: False
+  manual_input: False
+  iplocation: fr
+  js: True
+  domain: iwc.cn
+  scroll_and_load_more: //button[@class= "iwc-pcv2__btn"]
+  scroll_slowly: False
+  wait: 5
+  in_url: False
+  items_out: //div[contains(@class, "product-list-containe")]/div
+  url: .//a/@href
+  reference_code: ./div/@data-product-global-reference
+  image_url: .//div[@class="slick-slide slick-current slick-active"]//img/@src
+  price: .//p[contains(@class,"iwc-pcv2__slider-title")][2]/text()
+  title: .//p[contains(@class,"iwc-pcv2__slider-title")][1]/text()
+  total_items: //div[contains(@class, "result-count")]/text()
+  brand: IWC
+  click_popup: //button[@id="tc_privacy_button"]
+  start_url:
+    IWC_CNY_WATCHES:
+      - https://www.iwc.cn/cn/zh-cn/watches/pilot-watches
+      - https://www.iwc.cn/cn/zh-cn/watches/portugieser-watches
+      - https://www.iwc.cn/cn/zh-cn/watches/portofino-watches
+      - https://www.iwc.cn/cn/zh-cn/watches/ingenieur-watches
+      - https://www.iwc.cn/cn/zh-cn/watches/aquatimer-watches
+    IWC_CNY_WATCHES2:
+      - https://www.iwc.cn/cn/zh-cn/watches/portofino-watches
+
+
+panerai_all: 
+  js: True
+  manual_input: False
+  domain: panerai.com
+  scroll_slowly: True
+  items_out: //div[contains(@class,"prodreferencecontainer")]/div/li
+  url: .//a/@href
+  in_url: False
+  wait: 5
+  reference_code: ./@data-prod-ref-code
+  collection: //h3[contains(@class,"collection-heading")]/text()
+  product_dict: .//a/@data-tracking-product
+  image_url: .//picture/source/@srcset
+  price: .//p[@class="product-price"]/text()
+  total_items: //label[contains(@class,"header-product-count")]/span/text()
+  start_url:
+    Panerai_watches_EUR:
+      - https://www.panerai.com/fr/fr/collections/watch-collection/submersible.html
+      - https://www.panerai.com/fr/fr/collections/watch-collection/luminor.html
+      - https://www.panerai.com/fr/fr/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/fr/fr/collections/watch-collection/radiomir.html
+    Panerai_watches_USD:
+      - https://www.panerai.com/us/en/collections/watch-collection/submersible.html
+      - https://www.panerai.com/us/en/collections/watch-collection/luminor.html
+      - https://www.panerai.com/us/en/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/us/en/collections/watch-collection/radiomir.html
+    Panerai_watches_GBP:
+      - https://www.panerai.com/gb/en/collections/watch-collection/submersible.html
+      - https://www.panerai.com/gb/en/collections/watch-collection/luminor.html
+      - https://www.panerai.com/gb/en/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/gb/en/collections/watch-collection/radiomir.html
+    Panerai_watches_CHF:
+      - https://www.panerai.com/ch/fr/collections/watch-collection/submersible.html
+      - https://www.panerai.com/ch/fr/collections/watch-collection/luminor.html
+      - https://www.panerai.com/ch/fr/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/ch/fr/collections/watch-collection/radiomir.html
+    Panerai_watches_CNY: #change .com into .cn 
+      - https://www.panerai.cn/cn/zh-cn/collections/watch-collection/submersible.html
+      - https://www.panerai.cn/cn/zh-cn/collections/watch-collection/luminor.html
+      - https://www.panerai.cn/cn/zh-cn/collections/watch-collection/luminor-due.html
+      - https://www.panerai.cn/cn/zh-cn/collections/watch-collection/radiomir.html
+    Panerai_watches_HKD:
+      - https://www.panerai.com/hk/en/collections/watch-collection/submersible.html
+      - https://www.panerai.com/hk/en/collections/watch-collection/luminor.html
+      - https://www.panerai.com/hk/en/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/hk/en/collections/watch-collection/radiomir.html
+    Panerai_watches_TWD:
+      - https://www.panerai.com/tw/zh-tw/collections/watch-collection/submersible.html
+      - https://www.panerai.com/tw/zh-tw/collections/watch-collection/luminor.html
+      - https://www.panerai.com/tw/zh-tw/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/tw/zh-tw/collections/watch-collection/radiomir.html
+    Panerai_watches_JPY:
+      - https://www.panerai.com/jp/ja/collections/watch-collection/submersible.html
+      - https://www.panerai.com/jp/ja/collections/watch-collection/luminor.html
+      - https://www.panerai.com/jp/ja/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/jp/ja/collections/watch-collection/radiomir.html
+    Panerai_watches_KRW:
+      - https://www.panerai.com/kr/ko/collections/watch-collection/submersible.html
+      - https://www.panerai.com/kr/ko/collections/watch-collection/luminor.html
+      - https://www.panerai.com/kr/ko/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/kr/ko/collections/watch-collection/radiomir.html
+    Panerai_watches_AED:
+      - https://www.panerai.com/ae/en/collections/watch-collection/submersible.html
+      - https://www.panerai.com/ae/en/collections/watch-collection/luminor.html
+      - https://www.panerai.com/ae/en/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/ae/en/collections/watch-collection/radiomir.html
+    Panerai_watches_SGD:
+      - https://www.panerai.com/sg/en/collections/watch-collection/submersible.html
+      - https://www.panerai.com/sg/en/collections/watch-collection/luminor.html
+      - https://www.panerai.com/sg/en/collections/watch-collection/luminor-due.html
+      - https://www.panerai.com/sg/en/collections/watch-collection/radiomir.html
+
+
+piaget_all:
+  js: True
+  domain: piaget.com
+  #manual_input: True
+  scroll_and_load_more: //button[@data-cy="mixed-grid-see-all"]
+  scroll_slowly: True 
+  items_out: //div[@data-cy-item="product"]
+  url: .//a/@href
+  in_url: False
+  wait: 5
+  total_items: //div[contains(@data-cy,"products-count")]/text()
+  reference_code: ./@id
+  collection: ./@collection
+  image_url: .//img/@src
+  price: .//span[@data-price="value"]/text()
+  currency_symbol: .//span[@data-price="currency"]/text()
+  start_url:
+    Piaget_watches_EUR:
+      - https://www.piaget.com/fr-fr/watches/all-watches?page=50
+    Piaget_watches_AED:
+      - https://www.piaget.com/ae-en/watches/all-watches?page=50
+    Piaget_watches_KRW:
+      - https://www.piaget.com/kr-ko/watches/all-watches?page=50
+    Piaget_watches_GBP:
+      - https://www.piaget.com/gb-en/watches/all-watches?page=50
+    Piaget_watches_CHF:
+      - https://www.piaget.com/ch-fr/watches/all-watches?page=50
+    Piaget_watches_TWD:
+      - https://www.piaget.com/tw-zh/watches/all-watches?page=50
+    Piaget_watches_SGD:
+      - https://www.piaget.com/sg-en/watches/all-watches?page=50
+    Piaget_watches_HKD:
+      - https://www.piaget.com/hk-en/watches/all-watches?page=50
+    Piaget_watches_JPY: 
+      - https://www.piaget.com/jp-ja/watches/all-watches?page=50
+    Piaget_watches_USD:
+      - https://www.piaget.com/watches/all-watches?page=50
+    Piaget_watches_CNY:
+      - https://www.piaget.cn/watches/all-watches?page=50
+
+
+jaeger_lecoutre_all:
+  manual_input: False
+  domain: jaeger-lecoultre.com
+  js: True
+  click_popup: //button[@title="TOUT REFUSER"]
+  scroll_and_load_more: //button[span[text()="Voir tout" or text()="See all" or text()="查看全部"]]
+  scroll_slowly: true 
+  wait: 3
+  items_out: //div[@data-cy-item="product"]
+  total_items: //div[contains(@data-cy,"products-count")]/text()
+  url: .//a/@href
+  in_url: False
+  image_url: .//img/@src
+  reference_code: ./@itemid
+  collection: ./@collection
+  price: .//span[@data-price="value"]/text()
+  currency_symbol: .//span[@data-price="currency"]/text()
+  product_dict: .//div[@class="product-card__actions"]/button/@data-tracking
+  start_url:
+    Jaeger_lecoultre_watches_EUR: 
+      - https://www.jaeger-lecoultre.com/eu-fr/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_USD:
+      - https://www.jaeger-lecoultre.com/us-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_CNY:
+      - https://www.jaeger-lecoultre.cn/cn-sc/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_HKD:
+      - https://www.jaeger-lecoultre.com/hk-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_SGD:
+      - https://www.jaeger-lecoultre.com/sg-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_JPY:
+      - https://www.jaeger-lecoultre.com/jp-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_KRW:
+      - https://www.jaeger-lecoultre.com/kr-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_TWD:
+      - https://www.jaeger-lecoultre.com/tw-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_CHF:
+      - https://www.jaeger-lecoultre.com/ch-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_AED:
+      - https://www.jaeger-lecoultre.com/ae-en/watches/all-watches?page=15
+    Jaeger_lecoultre_watches_GBP:
+      - https://www.jaeger-lecoultre.com/gb-en/watches/all-watches?page=15
