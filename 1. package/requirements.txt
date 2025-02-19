@@ -1,0 +1,8 @@
+requests 
+pandas 
+python-dotenv 
+google-cloud-bigquery 
+matplotlib 
+seaborn 
+scikit-learn 
+numpy
