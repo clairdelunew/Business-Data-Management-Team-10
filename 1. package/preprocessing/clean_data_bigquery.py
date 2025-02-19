@@ -1,4 +1,6 @@
 import pandas as pd
+from dotenv import load_dotenv
+import os
 
 ### Clean the original dataset from Edhec-business-management
 def clean_bigquery_data_and_convert_currency(file_path, exchange_rates_df, dtypes_raw):
@@ -42,9 +44,9 @@ def clean_bigquery_data_and_convert_currency(file_path, exchange_rates_df, dtype
     # Merge exchange rate data with cleaned data
     merged_df = df.merge(exchange_rates_df, left_on="currency", right_on="Currency", how="left")
     # Calculate price in EUR
-    merged_df["price_eur"] = merged_df["price"] * merged_df["Exchange Rate"]
-    merged_df["price_difference_eur"] = merged_df["price_difference"] * merged_df["Exchange Rate"]
-    merged_df["price_before_eur"] = merged_df["price_before"] * merged_df["Exchange Rate"]
+    merged_df["price_eur"] = merged_df["price"] / merged_df["Exchange Rate"]
+    merged_df["price_difference_eur"] = merged_df["price_difference"] / merged_df["Exchange Rate"]
+    merged_df["price_before_eur"] = merged_df["price_before"] / merged_df["Exchange Rate"]
     # Delete'Currency'
     merged_df.drop(columns=["Currency"], inplace=True)
     
@@ -81,10 +83,25 @@ dtypes_raw = {
     "num_reviews": "int",  # Number of reviews, integer type
 }
 
+#Main Execution
+# ==========================
+if __name__ == "__main__":
+   
+    
+    
+    load_dotenv()
 
-# Example usage
-# exchange_rates_df = pd.read_csv("/Users/qianqian/Desktop/final_project/data/API-exchange_rates.csv")
-# file_path = "/Users/qianqian/Desktop/final_project/data/original/Bigquery-edhec-business-management.csv"
+    # Access environment variables
+    file_path = os.getenv("Original_data_path")
+    
+    exchange_rates_df = pd.read_csv(r"C:\Users\20766\Desktop\Business Project\1.package\preprocessing\API_exchange_rates.csv")
+    
+
+    cleaned_df = clean_bigquery_data_and_convert_currency(file_path, exchange_rates_df, dtypes_raw)
+    print("✅ Data Cleaned!")
+    print(cleaned_df.head())
+
+    
 
 
 
