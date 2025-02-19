@@ -1,0 +1,64 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww23440\viewh13900\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \
+1. Get the cloned file from github\
+\
+In the \'93datasources\'94 file: my_spider
+\f1 \uc0\u10145 \u65039 
+\f0  you can find all the files for web-scraping.\
+                                        data_original
+\f1 \uc0\u10145 \u65039 
+\f0  includes the two raw datasets we used for cleaning\
+\
+In the \'93preprocessing\'94 file:  Step 1:  We make up a\expnd0\expndtw0\kerning0
+ environment variable file named \'93.env\'94, 
+\f1 \kerning1\expnd0\expndtw0 \uc0\u10145 \u65039 
+\f0  \expnd0\expndtw0\kerning0
+configures the paths and credentials for fetching exchange rate data from an API, cleaning the data, and uploading it to BigQuery.\kerning1\expnd0\expndtw0 \
+                                           Step 2:  Run the function in \'93API-exchange_rate.py\'94 ,  
+\f1 \uc0\u10145 \u65039 
+\f0  then you can get a csv file \'93API-exchange_rate.csv\'94 under the same path automatically.\
+                                           Step 3:   Run the functions in the file \'93clean_data_panerai_webscrape.py\'94 and \'93clean_data_bigquery.py\'94 
+\f1 \uc0\u10145 \u65039 
+\f0   then you can get a csv file \'93Panerai_cleaned.csv\'94  and \'93Bigquery-edhec-business-management_cleaned.csv\'94 under the same path automatically.\
+                                           Step 4:   Run the functions in the file Upload_to_Bigquery.py \'94,  
+\f1 \uc0\u10145 \u65039 
+\f0   then you can connect the two cleaned datatsets to the bigquery automatically.\
+\
+We write setup file, \'93main.py\'94 file and makefile to make sure the whole project run automatically. (
+\f1 \uc0\u10071 \u65039 
+\f0 Each file have checked work well separately, but we don\'92t have time to check the whole project working as a whole)\
+\
+\
+\
+\
+\
+\
+PS: How we clean the raw datasets in the \'93clean_data_panerai_webscrape.py\'94 and \'93clean_data_bigquery.py\'94:\
+Cleans the raw BigQuery dataset by:\
+    1. Removing empty columns\
+    2. Converting column data types based on DTYPES_RAW\
+    3. Dropping duplicates and missing values\
+    4. Filtering out invalid rows where 'reference_code', 'price', 'collection', and 'brand' contain 0 or NaN\
+    5. Clean and convert price column to numeric (after removing non-numeric characters)\
+    6. Saving the cleaned dataset as 'Bigquery-edhec-business-management_cleaned.csv'\
+    """\
+    :param file_path: str, path to the raw CSV file\
+    :param dtypes_raw: dict, a dictionary mapping column names to data types\
+    """ \
+Cleans the Panerai dataset by:\
+    1. Removing empty columns\
+    2. Converting column data types based on DTYPES_RAW\
+    3. Dropping duplicate and missing values\
+    4. Filtering out invalid rows where key columns ('reference_code', 'price', 'collection', 'brand') contain 0 or NaN\
+    5. Clean and convert price column to numeric (after removing non-numeric characters)\
+    6. Saving the cleaned dataset as 'Panerai_cleaned.csv'\
+     """\
+    :param file_path: str, path to the raw CSV file\
+    :param dtypes_raw: dict, a dictionary mapping column names to data types\
+    """}
